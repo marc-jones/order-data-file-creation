@@ -62,6 +62,7 @@ with open(annotation_filepath) as f:
         groups_dict[gene].append({
             'name': gene,
             'group': agi_code,
+            'nicknames': ','.join(symbols.split(', ')),
             'label_tooltip': chromosome,
             'label_colour': 'default',
             'Arabidopsis gene': tair_link_string,
@@ -93,7 +94,7 @@ with open(record_details_output_filepath, 'w') as f_out:
         f_out.write('\t'.join([str(record_details_dict[gene][key])
             for key in record_details_headers]) + '\n')
 
-groups_headers = ['name', 'group', 'label_tooltip', 'label_colour',
+groups_headers = ['name', 'group', 'nicknames', 'label_tooltip', 'label_colour',
     'Arabidopsis gene', 'Abbreviation', 'BLAST Identity',
     'BLAST HSP Bit Score', 'BLAST HSP Length']
 

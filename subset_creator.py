@@ -59,7 +59,7 @@ user_content_name = 'user_content'
 shutil.copytree(order_data_filepath + '/' + user_content_name,
     order_data_subset_filepath + '/' + user_content_name)
 
-for filename in ['README.md', 'website_information.yaml']:
+for filename in ['README.md', 'website_information.yaml', 'plot_regions.tsv']:
     shutil.copy2(order_data_filepath + '/' + filename,
         order_data_subset_filepath + '/')
 
