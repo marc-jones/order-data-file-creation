@@ -5,8 +5,8 @@ import shutil
 
 flor_id_filepath = 'flor_id_combined_2015_01_27.csv'
 
-order_data_filepath = '~/Documents/order-data-files'
-order_data_subset_filepath = '~/Documents/order-data-files-subset'
+order_data_filepath = '/home/marcjones/Documents/order-data-files'
+order_data_subset_filepath = '/home/marcjones/Documents/order-data-files-subset'
 
 agi_set = set([])
 
@@ -24,10 +24,11 @@ with open(order_data_filepath + '/groups.tsv') as groups:
     for line in groups:
         xloc = line.strip().split('\t')[0]
         agi = re.sub('\.[0-9]', '', line.strip().split('\t')[1])
-        agi_to_xloc.setdefault(agi, set([]))
-        agi_to_xloc[agi].add(xloc)
-        xloc_to_agi.setdefault(xloc, set([]))
-        xloc_to_agi[xloc].add(agi)
+        if agi.startswith('AT'):
+            agi_to_xloc.setdefault(agi, set([]))
+            agi_to_xloc[agi].add(xloc)
+            xloc_to_agi.setdefault(xloc, set([]))
+            xloc_to_agi[xloc].add(agi)
 
 xloc_set = set([])
 xloc_set_length = -1
